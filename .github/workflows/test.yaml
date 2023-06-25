@@ -1,0 +1,36 @@
+name: CI
+on:
+  push:
+    branches: [ "stable" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Test
+        id: test
+        run: |
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "CONTENT<<$EOF" >> "$GITHUB_ENV"
+          echo "TEST=1" >> "$GITHUB_ENV"
+          echo "TEST2=2" >> "$GITHUB_ENV"
+          echo "$EOF" >> "$GITHUB_ENV"
+
+      - name: Test
+        run: |-
+          ${{ steps.test.outputs.CONTENT }}
+
+
+      - name: Test
+        run: >-
+          ${{ steps.test.outputs.CONTENT }}
+
+      - name: Test
+        run: >
+          ${{ steps.test.outputs.CONTENT }}
+
+      - name: Test
+        run: |
+          ${{ steps.test.outputs.CONTENT }}
