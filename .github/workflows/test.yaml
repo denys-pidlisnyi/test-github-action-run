@@ -20,17 +20,17 @@ jobs:
 
       - name: Test
         run: |+
-${{ steps.test.outputs.CONTENT }}
+          echo ${{ steps.test.outputs.CONTENT }}
 
 
       - name: Test
-        run: >-{10}
-          ${{ steps.test.outputs.CONTENT }}
+        run: >-
+          echo ${{ steps.test.outputs.CONTENT }}
 
       - name: Test
         run: >
-          ${{ steps.test.outputs.CONTENT }}
+          echo ${{ steps.test.outputs.CONTENT }}
 
       - name: Test
         run: |
-          ${{ steps.test.outputs.CONTENT }}
+          echo ${{ steps.test.outputs.CONTENT }}
