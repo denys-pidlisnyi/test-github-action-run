@@ -19,7 +19,9 @@ jobs:
           echo "$EOF" >> "$GITHUB_ENV"
 
       - name: Test
-        run: echo ${{ toJSON({"content": steps.test.outputs.CONTENT}) }}
+        env:
+          CONTENT: ${{ steps.test.outputs.CONTENT }}
+        run: echo $CONTENT
 
       - name: Test
         run: >-
