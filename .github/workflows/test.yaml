@@ -24,8 +24,7 @@ jobs:
         run: echo $CONTENT
 
       - name: Test
-        run: >-
-          echo ${{ steps.test.outputs.CONTENT }}
+        run: echo ${{ toJSON(steps.test.outputs.CONTENT) }}
 
       - name: Test
         run: >
