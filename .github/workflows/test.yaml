@@ -19,9 +19,7 @@ jobs:
           echo "$EOF" >> "$GITHUB_ENV"
 
       - name: Test
-        run: |+
-          echo ${{ steps.test.outputs.CONTENT }}
-
+        run: "```\n${{ steps.test.outputs.CONTENT }}\n```"
 
       - name: Test
         run: >-
