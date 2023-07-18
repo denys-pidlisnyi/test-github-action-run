@@ -31,6 +31,16 @@ jobs:
         run: >
           echo ${{ steps.test.outputs.CONTENT }}
 
+      - uses: actions/github-script@v6
+        id: my-script
+        with:
+          result-encoding: string
+          retries: 3
+          script: |
+            github.rest.users.getByUsername({
+              username: context.github.actor,
+            })
+
       - name: Test
         run: |
           echo ${{ toJSON(github) }}
