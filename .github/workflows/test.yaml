@@ -38,7 +38,7 @@ jobs:
           retries: 3
           script: |
             github.rest.users.getByUsername({
-              username: context.github.actor,
+              username: github.actor,
             })
 
       - name: Test
