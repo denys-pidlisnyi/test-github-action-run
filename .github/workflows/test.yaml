@@ -32,7 +32,7 @@ jobs:
           echo ${{ steps.test.outputs.CONTENT }}
 
       - uses: actions/github-script@v6
-        id: my-script
+        id: set-result
         with:
           result-encoding: string
           retries: 3
@@ -41,7 +41,8 @@ jobs:
               username: context.actor,
             })
 
-
+      - name: Get result
+        run: echo "${{steps.set-result.outputs.result}}"
 
 
       - name: Test
