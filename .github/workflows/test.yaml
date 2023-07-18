@@ -32,22 +32,13 @@ jobs:
           echo ${{ steps.test.outputs.CONTENT }}
 
       - uses: actions/github-script@v6
-        with:
-          result-encoding: string
-          retries: 3
-          script: |
-            console.log(github)
-            console.log(context)
-          
-
-      - uses: actions/github-script@v6
         id: my-script
         with:
           result-encoding: string
           retries: 3
           script: |
             github.rest.users.getByUsername({
-              username: github.actor,
+              username: context.actor,
             })
 
 
