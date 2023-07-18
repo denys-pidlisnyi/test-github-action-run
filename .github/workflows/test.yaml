@@ -37,9 +37,10 @@ jobs:
           result-encoding: string
           retries: 3
           script: |
-            github.rest.users.getByUsername({
+            const result = await github.rest.users.getByUsername({
               username: context.actor,
             })
+            console.log(result)
 
       - name: Get result
         run: echo "${{ toJSON(steps.set-result.outputs) }}"
